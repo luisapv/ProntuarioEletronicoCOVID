@@ -25,12 +25,14 @@ def save(data) :
         except Exception as exc:
 #            return jsonify({'exception': str(exc)}), 400
             print(exc)
-            return "Erro"
+            return "Erro Cadastrar"
     else :
         try :
             especialidade.nome = param_nome
             especialidade.descricao = param_descricao
             especialidadeDao.update_especialidade(especialidade)
-            return jsonify({'Especialidade': especialidade.__repr__, 'message': 'Especialidae successfully created'}), 201
+#            return jsonify({'Especialidade': especialidade.__repr__, 'message': 'Especialidae successfully created'}), 201
+            return "Editado"
         except Exception as exc:
-            return jsonify({'exception': str(exc), 'message': 'Especialidae not created'}), 400
+#            return jsonify({'exception': str(exc), 'message': 'Especialidae not created'}), 400
+            return "Erro Editar"

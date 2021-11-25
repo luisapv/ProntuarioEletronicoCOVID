@@ -1,6 +1,6 @@
 from config.db import app
-from flask import request, render_template
-from controller import pacienteController, especilidadeController
+from flask import request
+from controller import pacienteController
 
 @app.route('/')
 def hello_world():
@@ -9,7 +9,7 @@ def hello_world():
 @app.route('/paciente', methods=['GET'])
 def paciente_page():
     print('App_ROUTER: paciente_page')
-    return render_template("paciente_form.html")
+    return "paciente_form.html"
 
 @app.route('/paciente/save', methods=['POST'])
 def paciente_novo():
@@ -24,11 +24,3 @@ def paciente_lista():
     print('App_ROUTER: paciente_lista')
 
     return pacienteController.list()
-
-@app.route('/especialidade/save', methods=['POST'])
-def especialidade_save():
-    print('App_ROUTER: especialidade_save')
-
-    data = request.form
-    print(data)
-    return especilidadeController.save(data)
